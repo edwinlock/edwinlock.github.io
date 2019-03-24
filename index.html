@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dot Bid Designer</title>
+	<meta charset="utf-8">
+	
+<style>
+body {
+	text-align: center;
+	background: #DFDFDF;
+	margin: 0 30px 100px 30px;
+	font: 14px/18px 'Lucida Grande', sans-serif;
+}
+
+h1 {
+	font: bold 40px Georgia, serif;
+}
+
+canvas {
+	display: inline;
+	background: white;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	margin: 0px auto;
+}
+
+a {
+	color: black;
+}
+
+.error {
+	display: block;
+	color: red;
+	font-size: 28px;
+	line-height: 30px;
+	padding: 30px;
+}
+
+.center {
+	text-align: center;
+}
+
+textarea {
+	display: none;
+	width: 75%;
+	height: 400px;
+	margin: 0 auto;
+}
+
+#sidebar {
+	float: left;
+	width: 30%;
+	background: #ccc;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	margin: 0px auto;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+	
+
+th, td {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	height: 35px;
+}
+
+/*input {
+	width: 100%;
+}*/
+
+.numberinput{
+	text-align:center;
+	display: block;
+	margin: 0px auto;
+	padding: 0px;
+	width: 80%;
+	height: 80%;
+	font-size:14px;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+	margin: 0
+}
+
+.button {
+	width: 100%;
+	display: block;
+	background: gray;
+	padding: 10px 0px;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+</style>
+</head>
+
+<body>
+	<header>
+	<h1>The Dot Bid Workshop</h1>
+	<header>
+		
+	<section>
+		<div id="sidebar">			
+			<form onsubmit="addABid(); return false">
+				<h2> Add a bid </h2>
+				<p> (To delete a bid, add a bid at the same coordinates with <br> the opposite sign.) </p>
+				<table>
+					<tr>
+						<th> x</th>
+						<th> y</th>
+						<th> weight </th>
+						<th> </th>
+					</tr>
+					
+					<tr>
+						<th> <input type="number" id = "xcoord" class="numberinput" name="xcoord" value="1"></th>
+						<th> <input type="number" id = "ycoord" class="numberinput" name="ycoord" value="1"></th>
+						<th> <input type="number" id = "weight" class="numberinput" name="weight" value="1"> </th>
+						<th> <input type="submit" value="Add" class = "button"> </th>
+					</tr>
+				</table>
+			</form>
+			
+			<br>
+			<br>
+			
+			<form onsubmit="changeCoordinates(); return false">
+				<h2> Change grid size </h2>
+				<table>
+					<tr>
+						<th> x </th>
+						<th> y </th>
+						<th> </th>
+					</tr>
+					
+					<tr>
+						<th> <input type="number" id = "xAxis" class="numberinput" name="xAxis" value=""></th>
+						<th> <input type="number" id = "yAxis" class="numberinput" name="xAxis" value=""></th>
+						<th> <input type="submit" value="Change" class = "button"> </th>
+					</tr>
+				</table>
+			</form>
+
+		<br>
+		<br>
+		<h2> Download PNG image of price space </h2>
+		<a href="#" class="button" id="btn-download" download="dotbids.png"> Download </a>
+			
+		</div>
+		
+		<div id="canvasdiv">
+			<canvas id="canvas" width="900" height="700">
+				<span class="error">Your browser does not support<br>the HTML5 &lt;canvas&gt; element</span>
+			</canvas>
+		</div>
+	</section>
+
+	<script
+		src="db.js">	
+	</script>
+
+	<footer>
+	<p>&copy; Edwin Lock, 2019</p>
+	</footer>
+	
+</body>
+</html>
